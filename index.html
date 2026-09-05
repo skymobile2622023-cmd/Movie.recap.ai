@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Recap AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #171717;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 35px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #666;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto 70px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .upload {
+      border: 2px dashed #aaa;
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+
+    .upload input {
+      margin-top: 15px;
+    }
+
+    .or {
+      text-align: center;
+      margin: 20px 0;
+      color: #888;
+    }
+
+    input[type="url"],
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #111827;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #f0fdf4;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+
+    @media(max-width:600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎬 Movie Recap AI</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>AI Movie Recap</h1>
+  <p>Upload your video and create an engaging Myanmar recap.</p>
+</section>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="upload">
+      <h3>📁 Upload Video</h3>
+      <p>Select your video file</p>
+
+      <input
+        type="file"
+        id="videoFile"
+        accept="video/*">
+    </div>
+
+    <div class="or">
+      ───────── OR ─────────
+    </div>
+
+    <label>🔗 Video URL</label>
+
+    <input
+      type="url"
+      id="videoUrl"
+      placeholder="Paste authorized video URL here">
+
+    <label>🌐 Language</label>
+
+    <select id="language">
+      <option value="my">Myanmar 🇲🇲</option>
+      <option value="en">English 🇺🇸</option>
+    </select>
+
+    <label>🎬 Recap Style</label>
+
+    <select id="style">
+      <option>Cinematic</option>
+      <option>Short & Fast</option>
+      <option>Detailed Story</option>
+    </select>
+
+    <button onclick="generateRecap()">
+      ✨ GENERATE RECAP
+    </button>
+
+    <div class="result" id="result">
+      <h3>⏳ Processing...</h3>
+      <p id="status">
+        Your video is being prepared.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Movie Recap AI
+</footer>
+
+<script>
+
+function generateRecap() {
+
+  const file =
+    document.getElementById("videoFile").files[0];
+
+  const url =
+    document.getElementById("videoUrl").value;
+
+  const result =
+    document.getElementById("result");
+
+  const status =
+    document.getElementById("status");
+
+  if (!file && !url) {
+    alert("Please upload a video or paste a video URL.");
+    return;
+  }
+
+  result.style.display = "block";
+
+  status.innerText =
+    "Video received. AI processing will start soon.";
+
+}
+
+</script>
+
+</body>
+</html>
